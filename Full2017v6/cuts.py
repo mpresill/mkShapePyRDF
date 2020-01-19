@@ -1,25 +1,41 @@
 # cuts
 
 cuts["supercut"] ={
-    'expr':  'METFilter_MC && nLepton==1 && Lepton_pt[0]>30 && VBS_category==1',
+    'expr':  'METFilter_MC && nLepton==1 && Lepton_pt[0]>30',
     'parent' : None,
     'doVars': False,
     'doNumpy': False
 }
 
-cuts['muon_looseVBS'] = {
-    'expr': 'abs(Lepton_pdgId[0])==11 \
-        && Lepton_pt[0] >= 40 \
-        && vbs_0_pt > 30 && vbs_1_pt > 30  \
-        && vjet_0_pt > 30 && vjet_1_pt > 30 \
-        ',
+cuts["lowen_looseVBS"] = {
+    'expr': 'VBS_category==1 \
+            && vbs_0_pt > 30 && vbs_1_pt > 30  \
+            && vjet_0_pt > 30 && vjet_1_pt > 30 \
+            && mjj_vbs >=300    \
+            && deltaeta_vbs >= 2  \
+            && PuppiMET_pt > 30 \
+            && bVeto \
+            && mjj_vjet > 65 && mjj_vjet < 105 \
+            ',
     'parent' : 'supercut',
     'doVars': True,
     'doNumpy': True
-
 }
 
-
+cuts["boost_CR_looseVBS"] = {
+    'expr': 'VBS_category==0 \
+            && vbs_0_pt > 30 && vbs_1_pt > 30  \
+            && vjet_0_pt > 200 \
+            && mjj_vbs >=300    \
+            && deltaeta_vbs >= 2  \
+            && PuppiMET_pt > 30 \
+            && bVeto \
+            && mjj_vjet > 65 && mjj_vjet < 105 \
+            ',
+    'parent' : 'supercut',
+    'doVars': True,
+    'doNumpy': True
+}
 
 # # Second lepton veto already done in post-processing 
 # #and Lepton WP setup in samples.py

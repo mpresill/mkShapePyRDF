@@ -44,7 +44,8 @@ class Node:
 
 class Tree:
 
-  def __init__(self, cuts):
+  def __init__(self, name, cuts):
+    self.name = name
     self.tree = {}
     for key, obj in cuts.items():
       self.tree[key] = Node(key, obj)
@@ -101,6 +102,7 @@ class Tree:
 
   def __str__(self):
     out = []
+    out.append("Tree: " + self.name)
     for name, node in self.tree.items():
       out.append(str(node))
       out.append("--------------------------------------------------------------------------------")
@@ -182,7 +184,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
 
   for idf, df in enumerate(dfs):
     # The cut tree is the base structure
-    tree = Tree(cuts)
+    tree = Tree(sample, cuts)
     tree.supercut.rdf_node = df
 
     # Filter out aliases not for this samples

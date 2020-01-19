@@ -14,84 +14,55 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 bAlgo = 'DeepB'
 bWP = '0.1522'
 
-# aliases['bVeto'] = {
-#     'expr': '(Sum(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Take(Jet_btagDeepB,CleanJet_jetIdx) > 0.1522) == 0)'
-# }
-
-# aliases['bReq'] = {
-#     'expr': '(Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Take(Jet_btagDeepB,CleanJet_jetIdx) > 0.1522) >= 1)'
-# }
-
-
-# aliases['bVetoSF'] = {
-#     'expr': 'TMath::Exp(Sum(LogVec((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Take(Jet_btagSF_shape,CleanJet_jetIdx)+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
-#     'samples': mc
-# }
-
-# aliases['bReqSF'] = {
-#     'expr': 'TMath::Exp(Sum(LogVec((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Take(Jet_btagSF_shape,CleanJet_jetIdx)+1*(CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
-#     'samples': mc
-# }
-
-# aliases['btagSF'] = {
-#     'expr': 'bVeto*bVetoSF + bReq*bReqSF + ( (!bVeto) && (!bReq) )',
-#     'samples': mc
-# }
-
 aliases['bVeto'] = {
-    'expr': '1.'
+    'expr': '(Sum(CleanJet_pt > 20. && AbsVec(CleanJet_eta) < 2.5 && Take(Jet_btagDeepB,CleanJet_jetIdx) > 0.1522) == 0)'
 }
 
 aliases['bReq'] = {
-    'expr': '1.'
+    'expr': '(Sum(CleanJet_pt > 30. && AbsVec(CleanJet_eta) < 2.5 && Take(Jet_btagDeepB,CleanJet_jetIdx) > 0.1522) >= 1)'
 }
 
 
 aliases['bVetoSF'] = {
-    'expr': '1.',
+    'expr': 'TMath::Exp(Sum(LogVec((CleanJet_pt>20 && AbsVec(CleanJet_eta)<2.5)*Take(Jet_btagSF_shape,CleanJet_jetIdx)+1*(CleanJet_pt<20 || AbsVec(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
 aliases['bReqSF'] = {
-    'expr': '1.',
+    'expr': 'TMath::Exp(Sum(LogVec((CleanJet_pt>30 && AbsVec(CleanJet_eta)<2.5)*Take(Jet_btagSF_shape,CleanJet_jetIdx)+1*(CleanJet_pt<30 || AbsVec(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
 aliases['btagSF'] = {
-    'expr': '1.',
+    'expr': 'bVeto*bVetoSF + bReq*bReqSF + ( (!bVeto) && (!bReq) )',
     'samples': mc
 }
 
 # LastProcessing did not create (anti)topGenPt for ST samples with _ext1
-# lastcopy = (1 << 13)
+lastcopy = (1 << 13)
 
-# aliases['isTTbar'] = {
-#     'expr': 'Sum(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
-#     'samples': ['singleTop', 'ttbar']
-# }
+aliases['isTTbar'] = {
+    'expr': 'Sum(AbsVec(GenPart_pdgId) == 6 && OddVec(GenPart_statusFlags / %d)) == 2' % lastcopy,
+    'samples': ['singleTop', 'ttbar']
+}
 
-# aliases['isSingleTop'] = {
-#     'expr': 'Sum(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
-#      'samples': ['singleTop', 'ttbar']
-# }
+aliases['isSingleTop'] = {
+    'expr': 'Sum(AbsVec(GenPart_pdgId) == 6 && OddVec(GenPart_statusFlags / %d)) == 1' % lastcopy,
+     'samples': ['singleTop', 'ttbar']
+}
 
-# aliases['topGenPtOTF'] = {
-#     'expr': 'Sum((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-#      'samples': ['singleTop', 'ttbar']
-# }
+aliases['topGenPtOTF'] = {
+    'expr': 'Sum((GenPart_pdgId == 6 && OddVec(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
+     'samples': ['singleTop', 'ttbar']
+}
 
-# aliases['antitopGenPtOTF'] = {
-#     'expr': 'Sum((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-#      'samples': ['singleTop', 'ttbar']
-# }
-
-# aliases['Top_pTrw'] = {
-#     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-#      'samples': ['singleTop', 'ttbar']
-# }
+aliases['antitopGenPtOTF'] = {
+    'expr': 'Sum((GenPart_pdgId == -6 && OddVec(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
+     'samples': ['singleTop', 'ttbar']
+}
 
 aliases['Top_pTrw'] = {
-    'expr': '1',
+    'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
      'samples': ['singleTop', 'ttbar']
 }
 
