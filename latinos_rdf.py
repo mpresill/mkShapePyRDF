@@ -79,9 +79,9 @@ class Tree:
     for name, node in self.tree.items():
       if node.doVars == True:
         for varkey, varvalue in variables.items():
-          print(varkey, varvalue["name"])
-          node.rdf_node = node.rdf_node.Define(varkey, varvalue["name"])
-          node.vars.append(varkey)
+          #print(varkey, varvalue["name"])
+          node.rdf_node = node.rdf_node.Define(name+"_"+varkey, varvalue["name"])
+          node.vars.append(name+"_"+varkey)
 
   def define_weight(self, node, weight):
     if node not in self.tree:
@@ -133,6 +133,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
   # in that case we have to group the file in different DF 
   dfs = []
   weights_group = []
+  nfiles = []
 
   # Check if the samples had to be devided in 
   # different dataframes with different weights. 
@@ -158,6 +159,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
       # Create the dataframe
       df = rdf_class.RDataFrame("Events", files )
       dfs.append(df)
+      nfiles.append(len(fgroup))
 
 
   else:
@@ -171,6 +173,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     # Create RDataFrame
     df = rdf_class.RDataFrame("Events", files)
     dfs.append(df)
+    nfiles.append(len(sample_data["name"]))
 
  
   # Now for each initial DF, 
@@ -198,10 +201,8 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     
     tree.define_variables(variables)
 
-    
-
     chains.append(tree)
 
-  
-  return chains
+  #return also number of files   
+  return chains, nfiles
 

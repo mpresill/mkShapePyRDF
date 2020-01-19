@@ -29,7 +29,7 @@
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_WpToLNu_ZTo2J__part1.root", 
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_WpToLNu_ZTo2J__part2.root"
         ], 
-        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*nvtx_reweighting*btagSF"
+        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*btagSF"
     }, 
     "Wjets": {
         "FilesPerJob": 2, 
@@ -252,7 +252,7 @@
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_WJetsToLNu_HT2500_inf__part8.root", 
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_WJetsToLNu_HT2500_inf__part9.root"
         ], 
-        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*nvtx_reweighting*btagSF"
+        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*btagSF"
     }, 
     "singleTop": {
         "FilesPerJob": 4, 
@@ -294,7 +294,7 @@
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_ST_tW_top__part6.root", 
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_ST_tW_top__part7.root"
         ], 
-        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*nvtx_reweighting*btagSF* Top_pTrw"
+        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*btagSF* Top_pTrw"
     }, 
     "ttbar": {
         "FilesPerJob": 4, 
@@ -375,7 +375,7 @@
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_TTZjets_ext1__part7.root", 
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_TTZjets_ext1__part8.root"
         ], 
-        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*nvtx_reweighting*btagSF* Top_pTrw"
+        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*btagSF* Top_pTrw"
     }, 
     "DY": {
         "FilesPerJob": 3, 
@@ -563,6 +563,6 @@
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_DYJetsToLL_M-50_HT-1200to2500__part0.root", 
             "###root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_Full2017v6/MCl1loose2017v6__MCCorr2017v6__VBSjjlnuSkim2017v4/nanoLatino_DYJetsToLL_M-50_HT-2500toInf__part0.root"
         ], 
-        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*nvtx_reweighting*btagSF*(Sum(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 20.) == 0)"
+        "weight": "puWeight*                   TriggerEffWeight_1l*                   Lepton_RecoSF[0]*                   EMTFbug_veto*Lepton_tightElectron_mvaFall17V1Iso_WP90_IdIsoSF[0]*                Lepton_tightMuon_cut_Tight_HWWW_IdIsoSF[0]*(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5 || Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)*PrefireWeight*btagSF*(Sum(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 20.) == 0)"
     }
 }
