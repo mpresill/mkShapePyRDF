@@ -47,6 +47,7 @@ class Tree:
   def __init__(self, name, cuts):
     self.name = name
     self.tree = {}
+    self.variables = []
     for key, obj in cuts.items():
       self.tree[key] = Node(key, obj)
     
@@ -115,21 +116,21 @@ class Tree:
 
 def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     
-  samples = json.load(open(conf_dir + "/samples.json"))
-  variables = {}
-  cuts = {}
-  aliases = {}
-
-  exec(open(conf_dir+"/cuts.py").read())
-  exec(open(conf_dir+"/variables.py").read())
-  exec(open(conf_dir+"/aliases.py").read())
+  # samples = json.load(open(conf_dir + "/samples.json"))
+  # variables = {}
+  # cuts = {}
+  # aliases = {}
+  # exec(open(conf_dir+"/cuts.py").read())
+  # exec(open(conf_dir+"/variables.py").read())
+  # exec(open(conf_dir+"/aliases.py").read())
+  conf_r = ConfigReader(conf_dir)
 
   # Let's read the sample files as requested
-  if sample not in samples:  
+  if sample not in conf_r.samples:  
     print("Requested sample not exists!")
     return None
 
-  sample_data = samples[sample]
+  sample_data = conf_r.samples[sample]
 
   # We have to check is there is a weights entries: 
   # in that case we have to group the file in different DF 
@@ -184,13 +185,13 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
 
   for idf, df in enumerate(dfs):
     # The cut tree is the base structure
-    tree = Tree(sample, cuts)
+    tree = Tree(sample, conf_r.cuts)
     tree.supercut.rdf_node = df
 
     # Filter out aliases not for this samples
-    aliases = { key: obj for key, obj in aliases.items() 
+    conf_r.aliases = { key: obj for key, obj in conf_r.aliases.items() 
               if "samples" not in obj or sample in obj["samples"]}
-    tree.define_aliases("supercut", aliases)   
+    tree.define_aliases("supercut", conf_r.aliases)   
 
     # Now add the sample global weight
     weight = "("+ sample_data["weight"].replace("XSWeight", "1") +")"
@@ -201,10 +202,23 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     tree.define_weight("supercut", weight)
     tree.define_cuts("supercut")
     
-    tree.define_variables(variables)
+    tree.define_variables(conf_r.variables)
 
     chains.append(tree)
 
   #return also number of files   
   return chains, nfiles
 
+class ConfigReader:
+  def __init__(self, conf_dir):
+    self.samples = json.load(open(conf_dir + "/samples.json"))
+    samples = self.samples
+    variables = {}
+    exec(open(conf_dir+"/variables.py").read())
+    self.variables = variables
+    cuts = {}
+    exec(open(conf_dir+"/cuts.py").read())
+    self.cuts = cuts
+    aliases = {}
+    exec(open(conf_dir+"/aliases.py").read())
+    self.aliases = aliases

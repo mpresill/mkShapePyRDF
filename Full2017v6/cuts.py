@@ -22,7 +22,7 @@ cuts["lowen_looseVBS"] = {
     'doNumpy': True
 }
 
-cuts["boost_CR_looseVBS"] = {
+cuts["boost_looseVBS"] = {
     'expr': 'VBS_category==0 \
             && vbs_0_pt > 30 && vbs_1_pt > 30  \
             && vjet_0_pt > 200 \
