@@ -43,27 +43,27 @@ lastcopy = (1 << 13)
 
 aliases['isTTbar'] = {
     'expr': 'Sum(AbsVec(GenPart_pdgId) == 6 && OddVec(GenPart_statusFlags / %d)) == 2' % lastcopy,
-    'samples': ['singleTop', 'ttbar']
+    'samples': ['top']
 }
 
 aliases['isSingleTop'] = {
     'expr': 'Sum(AbsVec(GenPart_pdgId) == 6 && OddVec(GenPart_statusFlags / %d)) == 1' % lastcopy,
-     'samples': ['singleTop', 'ttbar']
+     'samples': ['top']
 }
 
 aliases['topGenPtOTF'] = {
     'expr': 'Sum((GenPart_pdgId == 6 && OddVec(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-     'samples': ['singleTop', 'ttbar']
+     'samples': ['top']
 }
 
 aliases['antitopGenPtOTF'] = {
     'expr': 'Sum((GenPart_pdgId == -6 && OddVec(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-     'samples': ['singleTop', 'ttbar']
+     'samples': ['top']
 }
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-     'samples': ['singleTop', 'ttbar']
+     'samples': ['top']
 }
 
 # systs = ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']

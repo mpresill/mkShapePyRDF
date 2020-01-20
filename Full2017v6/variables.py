@@ -2,6 +2,26 @@
 
 #variables = {}
 
+## cuts
+
+variables['Lepton_RecoSF_0'] = {
+    'name': "Lepton_RecoSF[0]",
+    ## numpy only
+    # 'cut': True
+}
+
+eleWP='mvaFall17V1Iso_WP90'
+muWP='cut_Tight_HWWW'
+LepWPWeight_1l = 'Lepton_tightElectron_'+eleWP+'_IdIsoSF[0] *Lepton_tightMuon_'+muWP+'_IdIsoSF[0]'
+
+variables['LepWPWeight'] = {
+    'name': LepWPWeight_1l,
+    ## numpy only
+    # 'cut': True
+}
+
+## variables
+
 variables['events']  = {   'name': '1',      
                         'range' : (1,0,2),  
                         'xaxis' : 'events', 
@@ -319,11 +339,11 @@ variables['Centr_ww'] = {   'name': 'Centr_ww',
                         }
 
 
-variables['mll'] = {   'name': 'mll',      
-                        'range' : (15,0,105),  
-                        'xaxis' : 'Invariant mass of two leptons', 
-                        'fold' : 3
-                        }
+# variables['mll'] = {   'name': 'mll',      
+#                         'range' : (15,0,105),  
+#                         'xaxis' : 'Invariant mass of two leptons', 
+#                         'fold' : 3
+#                         }
 
 
 variables['nvtx'] = {  'name': 'PV_npvs',

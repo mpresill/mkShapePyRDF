@@ -91,7 +91,8 @@ class Tree:
       return False
     node = self.tree[node]
     # Add also a cut on weight != 0 in case cut and weight are mixed
-    node.rdf_node = node.rdf_node.Define("weight", weight).Filter("weight != 0")
+    node.rdf_node = node.rdf_node.Define("weight", weight)
+    # node.rdf_node = node.rdf_node.Filter("weight != 0.")
     node.weight = weight
 
   
