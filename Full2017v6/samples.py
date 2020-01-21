@@ -57,15 +57,11 @@ LepWPWeight = LepWPWeight_1l
 ############ BASIC MC WEIGHTS ##################
 ################################################
 
-XSWeight      = 'XSWeight'
-SFweight1l =       'puWeight*\
-                   TriggerEffWeight_1l*\
-                   Lepton_RecoSF[0]*\
-                   EMTFbug_veto'
-SFweight      = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'*PrefireWeight'
+XSWeight   = 'XSWeight'
+SFweight1l =  'TriggerEffWeight_1l*\
+                Lepton_RecoSF[0]'
+SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'*PrefireWeight'
      
-GenLepMatch   = 'Lepton_genmatched[0]'
-
 ####
 # NVTX reweighting
  #SFweight += '*nvtx_reweighting'

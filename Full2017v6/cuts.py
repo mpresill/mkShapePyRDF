@@ -3,18 +3,17 @@
 
 eleWP='mvaFall17V1Iso_WP90'
 muWP='cut_Tight_HWWW'
-
-
 LepWPCut_1l =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
 
 cuts["supercut"] ={
     'expr':  'METFilter_MC \
+                && EMTFbug_veto \
                 && nLepton==1 \
                 && ( \
                      ( (abs(Lepton_pdgId[0])==11) && (Lepton_pt[0]>40) ) || \
                      ( (abs(Lepton_pdgId[0])==13) && (Lepton_pt[0]>30) )    \
                    ) \
-                && (Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)',
+                && ' + LepWPCut_1l,
     'parent' : None,
     'doVars': False,
     'doNumpy': False

@@ -4,7 +4,7 @@
 
 ## cuts
 
-variables['Lepton_RecoSF_0'] = {
+variables['Lepton_RecoSF'] = {
     'name': "Lepton_RecoSF[0]",
     ## numpy only
     # 'cut': True
@@ -18,6 +18,11 @@ variables['LepWPWeight'] = {
     'name': LepWPWeight_1l,
     ## numpy only
     # 'cut': True
+}
+
+variables['puWeight'] = {
+    'name': 'puWeight'
+    ## numpy only
 }
 
 ## variables
