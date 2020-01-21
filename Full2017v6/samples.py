@@ -58,24 +58,17 @@ LepWPWeight = LepWPWeight_1l
 ################################################
 
 XSWeight   = 'XSWeight'
+
 SFweight1l =  'TriggerEffWeight_1l*\
                 Lepton_RecoSF[0]'
-SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'*PrefireWeight'
+SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l
+SFweight += '*PrefireWeight'
+SFweight += '*btagSF'
      
 ####
 # NVTX reweighting
  #SFweight += '*nvtx_reweighting'
 
-
-################################################
-############### B-Tag  WP ######################
-################################################
-
-#FIXME b-tagging to be optimized
-# Definitions in aliases.py
-
-# Not using any btagging yet
-SFweight += '*btagSF'
 ################################################
 ############   MET  FILTERS  ###################
 ################################################

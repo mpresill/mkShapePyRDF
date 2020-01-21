@@ -25,6 +25,21 @@ variables['puWeight'] = {
     ## numpy only
 }
 
+variables['TriggerEffWeight_1l'] = {
+    'name': 'TriggerEffWeight_1l'
+    ## numpy only
+}
+
+variables['btagSF'] = {
+    'name': 'btagSF'
+    ## numpy only
+}
+
+variables['PrefireWeight'] = {
+    'name': 'PrefireWeight'
+    ## numpy only
+}
+
 ## variables
 
 variables['events']  = {   'name': '1',      
