@@ -61,7 +61,7 @@ XSWeight   = 'XSWeight'
 
 SFweight1l =  'TriggerEffWeight_1l*\
                 Lepton_RecoSF[0]'
-SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l
+SFweight   = SFweight1l+'*'+LepWPWeight_1l
 SFweight += '*PrefireWeight'
 SFweight += '*btagSF'
      
