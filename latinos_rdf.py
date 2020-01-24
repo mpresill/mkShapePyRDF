@@ -92,7 +92,10 @@ class Tree:
     node = self.tree[node]
     # Add also a cut on weight != 0 in case cut and weight are mixed
     node.rdf_node = node.rdf_node.Define("weight", weight)
-    # node.rdf_node = node.rdf_node.Filter("weight != 0.")
+    ## We can enable the following line after having checked what zeroes
+    ## the weights.
+    ## 2017v6: DY_photon_filter does!
+    node.rdf_node = node.rdf_node.Filter("weight != 0.")
     node.weight = weight
 
   
