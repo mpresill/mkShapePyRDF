@@ -90,12 +90,9 @@ class Tree:
       print("Cut not found")
       return False
     node = self.tree[node]
-    # Add also a cut on weight != 0 in case cut and weight are mixed
+    # Add also a cut on weight > 0 in case cut and weight are mixed
     node.rdf_node = node.rdf_node.Define("weight", weight)
-    ## We can enable the following line after having checked what zeroes
-    ## the weights.
-    ## 2017v6: DY_photon_filter does!
-    node.rdf_node = node.rdf_node.Filter("weight != 0.")
+    node.rdf_node = node.rdf_node.Filter("weight > 0.")
     node.weight = weight
 
   
@@ -198,7 +195,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     tree.define_aliases("supercut", conf_r.aliases)   
 
     # Now add the sample global weight
-    weight = "("+ sample_data["weight"].replace("XSWeight", "1") +")"
+    weight = "("+ sample_data["weight"] +")"
     if weights_group:
       weight += "*("+ weights_group[idf] + ")"
     # Define the weight on the super cut, after aliases

@@ -5,7 +5,7 @@
 ## cuts
 
 variables['Lepton_RecoSF'] = {
-    'name': "Lepton_RecoSF[0]",
+    'name': 'Lepton_RecoSF[0]',
     ## numpy only
     # 'cut': True
 }
@@ -35,17 +35,8 @@ variables['btagSF'] = {
     ## numpy only
 }
 
-variables['PrefireWeight'] = {
-    'name': 'PrefireWeight'
-    ## numpy only
-}
 
-variables['GenLepMatch'] = {
-    'name': 'Lepton_genmatched[0]',
-    ##numpy only
-}
-
-## variables
+# ## variables
 
 variables['events']  = {   'name': '1',      
                         'range' : (1,0,2),  
