@@ -40,6 +40,11 @@ variables['PrefireWeight'] = {
     ## numpy only
 }
 
+variables['GenLepMatch'] = {
+    'name': 'Lepton_genmatched[0]',
+    ##numpy only
+}
+
 ## variables
 
 variables['events']  = {   'name': '1',      

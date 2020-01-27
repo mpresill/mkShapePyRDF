@@ -58,17 +58,28 @@ LepWPWeight = LepWPWeight_1l
 ################################################
 
 XSWeight   = 'XSWeight'
-
-SFweight1l =  'TriggerEffWeight_1l*\
-                Lepton_RecoSF[0]'
-SFweight   = SFweight1l+'*'+LepWPWeight_1l
+SFweight1l =       'puWeight*\
+                   TriggerEffWeight_1l*\
+                   Lepton_RecoSF[0]*\
+                   EMTFbug_veto'
+SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l
 SFweight += '*PrefireWeight'
-SFweight += '*btagSF'
      
+GenLepMatch   = 'Lepton_genmatched[0]'
+
 ####
 # NVTX reweighting
  #SFweight += '*nvtx_reweighting'
 
+################################################
+############### B-Tag  WP ######################
+################################################
+
+#FIXME b-tagging to be optimized
+# Definitions in aliases.py
+
+# Not using any btagging yet
+SFweight += '*btagSF'
 ################################################
 ############   MET  FILTERS  ###################
 ################################################
@@ -119,7 +130,7 @@ samples['DY'] = {    'name'   :   nanoGetSampleFiles(directory_bkg,'DYJetsToLL_M
                                 + nanoGetSampleFiles(directory_bkg,'DYJetsToLL_M-50_HT-1200to2500')
                                 + nanoGetSampleFiles(directory_bkg,'DYJetsToLL_M-50_HT-2500toInf')
                                 ,
-        'weight' : SFweight + '*' + DY_photon_filter, #####ADD ewknloW
+        'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + '*' + DY_photon_filter, #####ADD ewknloW
         'FilesPerJob' : 3,
                   }
 
@@ -155,7 +166,7 @@ samples['top'] = {
                       #+ nanoGetSampleFiles(directory_bkg,'TTZjets'),
                       + nanoGetSampleFiles(directory_bkg,'TTZjets_ext1'),
                       # +  nanoGetSampleFiles(directory_bkg,'TTWJetsToLNu'),
-            'weight': SFweight + "* Top_pTrw",
+            'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + "* Top_pTrw",
 }
 
 
@@ -178,10 +189,12 @@ samples['Wjets'] = { 'name' :
           #+ nanoGetSampleFiles(directory_bkg, 'WJetsToLNu_HT1200_2500_ext1')
           + nanoGetSampleFiles(directory_bkg, 'WJetsToLNu_HT2500_inf'),
           #+ nanoGetSampleFiles(directory_bkg, 'WJetsToLNu_HT2500_inf_ext1'),
-				'weight': SFweight,  #####ADD ewknloW 
+				'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch,  #####ADD ewknloW 
 				'FilesPerJob' : 2,
 		   }
 
+# Fix Wjets binned + LO 
+addSampleWeight(samples,'Wjets', 'WJetsToLNu-LO', 'LHE_HT < 100')
 
 
 # samples['VV']  = { 'name' :  
@@ -194,7 +207,7 @@ samples['Wjets'] = { 'name' :
 #                nanoGetSampleFiles(directory_bkg,'WpToLNu_WpTo2J_QCD') +
 #                nanoGetSampleFiles(directory_bkg,'WpToLNu_ZTo2J_QCD',) +
 #                nanoGetSampleFiles(directory_bkg,'ZTo2L_ZTo2J_QCD',  ) ,
-#         'weight': SFweight + "* ewknloW",
+#         'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + "* ewknloW",
 #         'FilesPerJob' : 3,
 # }
 
@@ -205,7 +218,7 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(directory_bkg,'ZZZ')
                                 + nanoGetSampleFiles(directory_bkg,'WWZ')
                                 + nanoGetSampleFiles(directory_bkg,'WWW'),
                                 #+ nanoGetSampleFiles(directory,'WWG'), #should this be included? or is it already taken into account in the WW sample?
-                    'weight' : SFweight  ,
+                    'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch  ,
                     'FilesPerJob' : 5,
                   }
 
@@ -215,7 +228,7 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(directory_bkg,'ZZZ')
 # ###nanoGetSampleFiles(directory_bkg,'WLNuJJ_EWK')# ADD MEEEE
 # samples['VBF-V']  = {  'name'   :   
 #                                   nanoGetSampleFiles(directory_bkg,'EWKZ2Jets_ZToLL_M-50'),
-#                     'weight' : SFweight ,
+#                     'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch ,
 #                     'FilesPerJob' : 6
 #                   }
 
@@ -235,7 +248,7 @@ samples['VBS']  = { 'name' :
                nanoGetSampleFiles(directory_signal,'WpToLNu_WpTo2J') +
                nanoGetSampleFiles(directory_signal,'WpToLNu_ZTo2J'),
                #nanoGetSampleFiles(directory_signal,'ZTo2L_ZTo2J' ),
-       'weight': SFweight,
+       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch,
        'FilesPerJob' : 4,
 }
 
