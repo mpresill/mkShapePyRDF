@@ -151,7 +151,9 @@ addSampleWeight(samples,'DY','DYJetsToLL_M-50_HT-2500toInf',ptllDYW_LO)
 
 
 ############ Top ############
-Top_pTrw = '(TMath::Sqrt( TMath::Exp(0.0615-0.0005*topGenPt) * TMath::Exp(0.0615-0.0005*antitopGenPt) ) )'
+
+
+
 
 samples['top'] = {
             'name'   :  nanoGetSampleFiles(directory_bkg,'ST_s-channel')
