@@ -63,7 +63,7 @@ SFweight1l =       'puWeight*\
                    Lepton_RecoSF[0]*\
                    EMTFbug_veto'
 SFweight   = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l
-SFweight += '*PrefireWeight'
+SFweight += '*PrefireWeight*btagSF'
      
 GenLepMatch   = 'Lepton_genmatched[0]'
 
@@ -71,15 +71,6 @@ GenLepMatch   = 'Lepton_genmatched[0]'
 # NVTX reweighting
  #SFweight += '*nvtx_reweighting'
 
-################################################
-############### B-Tag  WP ######################
-################################################
-
-#FIXME b-tagging to be optimized
-# Definitions in aliases.py
-
-# Not using any btagging yet
-SFweight += '*btagSF'
 ################################################
 ############   MET  FILTERS  ###################
 ################################################
@@ -151,10 +142,6 @@ addSampleWeight(samples,'DY','DYJetsToLL_M-50_HT-2500toInf',ptllDYW_LO)
 
 
 ############ Top ############
-
-
-
-
 samples['top'] = {
             'name'   :  nanoGetSampleFiles(directory_bkg,'ST_s-channel')
                       + nanoGetSampleFiles(directory_bkg,'ST_t-channel_antitop')

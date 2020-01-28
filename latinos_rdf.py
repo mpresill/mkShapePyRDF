@@ -194,7 +194,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
     tree.define_aliases("supercut", conf_r.aliases)   
 
     # Now add the sample global weight
-    weight = "("+ sample_data["weight"].replace("XSWeight", "1") +")"
+    weight = "("+ sample_data["weight"] +")"
     if weights_group:
       weight += "*("+ weights_group[idf] + ")"
     # Define the weight on the super cut, after aliases
