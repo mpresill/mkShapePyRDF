@@ -114,7 +114,7 @@ class Tree:
 
 #######################################################################################################
 
-def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
+def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
     
   # samples = json.load(open(conf_dir + "/samples.json"))
   # variables = {}
@@ -123,7 +123,7 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
   # exec(open(conf_dir+"/cuts.py").read())
   # exec(open(conf_dir+"/variables.py").read())
   # exec(open(conf_dir+"/aliases.py").read())
-  conf_r = ConfigReader(conf_dir)
+  conf_r = ConfigReader(conf_dir, version_tag)
 
   # Let's read the sample files as requested
   if sample not in conf_r.samples:  
@@ -210,8 +210,8 @@ def build_dataframe(conf_dir, sample, rdf_class, rdf_type):
   return chains, nfiles
 
 class ConfigReader:
-  def __init__(self, conf_dir):
-    self.samples = json.load(open(conf_dir + "/samples.json"))
+  def __init__(self, conf_dir, version_tag):
+    self.samples = json.load(open(conf_dir + "/samples_" + version_tag+ ".json"))
     samples = self.samples
     variables = {}
     exec(open(conf_dir+"/variables.py").read())
