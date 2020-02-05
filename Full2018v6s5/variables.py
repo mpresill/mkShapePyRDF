@@ -25,6 +25,11 @@ variables['Lepton_pt'] = {   'name': 'Lepton_pt[0]',
                         'fold' : 3
                         }                       
 
+variables['Lepton_flavour'] = {
+    'name': 'abs(Lepton_pdgId[0])'
+    # numpy only
+}
+
 #MET
 variables['PuppiMET'] = {   'name': 'PuppiMET_pt',      
                         'range' : (30,0,500),  
@@ -46,33 +51,33 @@ variables['MET_pt'] = {   'name': 'MET_pt',
                         }
 
 
-variables['recoMET_pz'] = {   'name': 'recoMET_pz',      
-                        'range' : (40,-700,700),  
-                        'xaxis' : 'recoMET pz', 
-                        'fold' : 3
-                        }
+# variables['recoMET_pz'] = {   'name': 'recoMET_pz',      
+#                         'range' : (40,-700,700),  
+#                         'xaxis' : 'recoMET pz', 
+#                         'fold' : 3
+#                         }
                 
 
-#jets 
-variables['nJets'] = {   'name': 'Sum$(CleanJet_pt >= 30)',      
-                        'range' : (10,0,10),  
-                        'xaxis' : 'nJets >= 30 GeV', 
-                        'fold' : 3
-                        }
+# #jets 
+# variables['nJets'] = {   'name': 'Sum$(CleanJet_pt >= 30)',      
+#                         'range' : (10,0,10),  
+#                         'xaxis' : 'nJets >= 30 GeV', 
+#                         'fold' : 3
+#                         }
 
-# Minimum pt 20 GeV in NanoGardening step
-variables['N_jets_central'] = {   'name': 'N_jets_central',      
-                        'range' : (10,0,10),  
-                        'xaxis' : '#jets between VBS jets', 
-                        'fold' : 3
-                        }
+# # Minimum pt 20 GeV in NanoGardening step
+# variables['N_jets_central'] = {   'name': 'N_jets_central',      
+#                         'range' : (10,0,10),  
+#                         'xaxis' : '#jets between VBS jets', 
+#                         'fold' : 3
+#                         }
 
 
-variables['N_jets_forward'] = {   'name': 'N_jets_forward',      
-                        'range' : (10,0,10),  
-                        'xaxis' : '#jets outside VBS jets', 
-                        'fold' : 3
-                    }
+# variables['N_jets_forward'] = {   'name': 'N_jets_forward',      
+#                         'range' : (10,0,10),  
+#                         'xaxis' : '#jets outside VBS jets', 
+#                         'fold' : 3
+#                     }
 
 
 # VBS vars
@@ -215,7 +220,7 @@ variables['Zvjets_0'] = {   'name': 'Zvjets_0',
                         'fold' : 3
                         }
 
-variables['Zvjets_0'] = {   'name': 'Zvjets_0',      
+variables['Zvjets_1'] = {   'name': 'Zvjets_1',      
                         'range' : (30,-3,3),  
                         'xaxis' : 'Zep. trailing V-jet ', 
                         'fold' : 3

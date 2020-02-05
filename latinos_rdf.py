@@ -81,7 +81,6 @@ class Tree:
     for name, node in self.tree.items():
       if node.doVars == True:
         for varkey, varvalue in variables.items():
-          #print(varkey, varvalue["name"])
           node.rdf_node = node.rdf_node.Define(name+"_"+varkey, varvalue["name"])
           node.vars.append(name+"_"+varkey)
 
