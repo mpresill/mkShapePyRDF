@@ -98,7 +98,11 @@ class Tree:
     return self.tree.get(key, None)
 
   def __getitem__(self, key):
-    return self.tree.get(key, None)
+    try:
+      self.tree.get(key, None)
+    except e:
+      print("Cut not found! ", key)
+      raise e
 
   def __str__(self):
     out = []
