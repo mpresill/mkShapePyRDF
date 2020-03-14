@@ -50,8 +50,23 @@ class Tree:
     self.variables = []
     for key, obj in cuts.items():
       self.tree[key] = Node(key, obj)
+
+    def define_cuts(self, cut):
+      if cut not in self.tree:
+        print("Cut not found")
+        return False
+      # Create the filter
+      node = self.tree[cut]
+      if node.parent == None:
+        #it's the supercut
+        node.rdf_node = node.rdf_node.Filter(node.expr, cut)
+      else:
+        node.rdf_node = self.tree[node.parent].rdf_node.Filter(node.expr, cut)
+      # Now do it for each children
+      for child_node in self.tree.values():
+        if child_node.parent == node.name:
+          self.define_cuts(child_node.name)
     
-      
   def define_aliases(self, node, aliases):
     if node not in self.tree:
       print("Node not found in tree")
@@ -60,22 +75,6 @@ class Tree:
       self.tree[node].rdf_node = self.tree[node].rdf_node.Define(key, aliases[key]["expr"])
       self.tree[node].aliases.append(key)
     return True
-
-  def define_cuts(self, cut):
-    if cut not in self.tree:
-      print("Cut not found")
-      return False
-    # Create the filter
-    node = self.tree[cut]
-    if node.parent == None:
-      #it's the supercut
-      node.rdf_node = node.rdf_node.Filter(node.expr, cut)
-    else:
-      node.rdf_node = self.tree[node.parent].rdf_node.Filter(node.expr, cut)
-    # Now do it for each children
-    for child_node in self.tree.values():
-      if child_node.parent == node.name:
-        self.define_cuts(child_node.name)
 
   def define_variables(self, variables):
     for name, node in self.tree.items():
@@ -93,7 +92,7 @@ class Tree:
     node.rdf_node = node.rdf_node.Define("weight_", weight).Filter("weight_ > 0.")
     node.weight = weight
 
-  
+
   def __getattr__(self, key):
     return self.tree.get(key, None)
 
@@ -111,14 +110,14 @@ class Tree:
       out.append(str(node))
       out.append("--------------------------------------------------------------------------------")
     return "\n".join(out)
-     
+
   def __repr__(self):
     return str(self)
 
 #######################################################################################################
 
 def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
-    
+
   # samples = json.load(open(conf_dir + "/samples.json"))
   # variables = {}
   # cuts = {}
@@ -129,20 +128,20 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
   conf_r = ConfigReader(conf_dir, version_tag)
 
   # Let's read the sample files as requested
-  if sample not in conf_r.samples:  
+  if sample not in conf_r.samples:
     print("Requested sample not exists!")
     return None
 
   sample_data = conf_r.samples[sample]
 
-  # We have to check is there is a weights entries: 
-  # in that case we have to group the file in different DF 
+  # We have to check is there is a weights entries:
+  # in that case we have to group the file in different DF
   dfs = []
   weights_group = []
   nfiles = []
 
-  # Check if the samples had to be devided in 
-  # different dataframes with different weights. 
+  # Check if the samples had to be devided in
+  # different dataframes with different weights.
   if "weights" in sample_data:
     files_groups = {}
     # dividere il dataframe in diversi pezzi
@@ -152,7 +151,7 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
         files_groups[w] = []
 
       files_groups[w].append(sample_data["name"][iw])
-    
+
     #create all the dfs
     for w, fgroup in files_groups.items():
       if rdf_type == "root":
@@ -161,7 +160,7 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
           files.push_back(f[3:])
       else:
         files = [ f[3:] for f in fgroup ]
-      
+
       # Create the dataframe
       df = rdf_class.RDataFrame("Events", files )
       dfs.append(df)
@@ -181,8 +180,8 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
     dfs.append(df)
     nfiles.append(len(sample_data["name"]))
 
- 
-  # Now for each initial DF, 
+
+  # Now for each initial DF,
   # Create alias, global weight, create cuts, create variables
   chains = []
 
@@ -192,9 +191,9 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
     tree.supercut.rdf_node = df
 
     # Filter out aliases not for this samples
-    conf_r.aliases = { key: obj for key, obj in conf_r.aliases.items() 
+    conf_r.aliases = { key: obj for key, obj in conf_r.aliases.items()
               if "samples" not in obj or sample in obj["samples"]}
-    tree.define_aliases("supercut", conf_r.aliases)   
+    tree.define_aliases("supercut", conf_r.aliases)
 
     # Now add the sample global weight
     weight = "("+ sample_data["weight"] +")"
@@ -204,12 +203,12 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
     # This is cut becase the weight can be used as a cut
     tree.define_weight("supercut", weight)
     tree.define_cuts("supercut")
-    
+
     tree.define_variables(conf_r.variables)
 
     chains.append(tree)
 
-  #return also number of files   
+  #return also number of files
   return chains, nfiles
 
 class ConfigReader:
