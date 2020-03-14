@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+import ROOT as R
+R.gROOT.SetBatch(True)
 import argparse
 import os
 from pprint import pprint
 import pandas as pd 
+
 
 import latinos_rdf as lrdf
 
@@ -12,19 +14,19 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--config-dir", type=str, help="Latinos config dir")
 parser.add_argument("--cut", type=str, help="Cut to output")
 parser.add_argument("-o","--outputdir", type=str, help="Output dir")
-parser.add_argument("-v","--version", type=str, help="Version")
+parser.add_argument("--vers", type=str, help="Version")
 parser.add_argument("-s","--samples", type=str, nargs="+", help="Samples to output")
 parser.add_argument("--debug", action="store_true", help="Debug output")
 args = parser.parse_args()
 
-import ROOT as R
+
 R.ROOT.EnableImplicitMT() # only for ROOT rdf
 print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
 
 R.gInterpreter.ProcessLine(".L headers.hh")
 
 # sample version
-version = args.version
+version = args.vers
 # input: plot config tag
 config_dir = args.config_dir
 
