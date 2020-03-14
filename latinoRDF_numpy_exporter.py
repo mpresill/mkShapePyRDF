@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import ROOT as R
+import argparse
 import os
 from pprint import pprint
 import pandas as pd 
-import argparse
-
 
 import latinos_rdf as lrdf
 
@@ -19,7 +17,7 @@ parser.add_argument("-s","--samples", type=str, nargs="+", help="Samples to outp
 parser.add_argument("--debug", action="store_true", help="Debug output")
 args = parser.parse_args()
 
-
+import ROOT as R
 R.ROOT.EnableImplicitMT() # only for ROOT rdf
 print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
 
@@ -48,6 +46,7 @@ config = lrdf.ConfigReader(config_dir, version)
 ### List of variables to output: 
 # The name of the variable is: cut_variablename
 output_columns = [ cut+"_"+c for c in config.variables]
+output_columns += ["weight_"]
 
 print("Output columns: ", output_columns)
 

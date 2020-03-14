@@ -99,7 +99,7 @@ class Tree:
 
   def __getitem__(self, key):
     try:
-      self.tree.get(key, None)
+      return self.tree.get(key, None)
     except e:
       print("Cut not found! ", key)
       raise e
