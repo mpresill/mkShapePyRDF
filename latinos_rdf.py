@@ -50,7 +50,6 @@ class Tree:
     self.variables = []
     for key, obj in cuts.items():
       self.tree[key] = Node(key, obj)
-    
       
   def define_aliases(self, node, aliases):
     if node not in self.tree:
@@ -93,7 +92,6 @@ class Tree:
     node.rdf_node = node.rdf_node.Define("weight_", weight).Filter("weight_ > 0.")
     node.weight = weight
 
-  
   def __getattr__(self, key):
     return self.tree.get(key, None)
 
@@ -189,7 +187,7 @@ def build_dataframe(conf_dir, version_tag, sample, rdf_class, rdf_type):
   for idf, df in enumerate(dfs):
     # The cut tree is the base structure
     tree = Tree(sample, conf_r.cuts)
-    tree.supercut.rdf_node = df
+    tree['supercut'].rdf_node = df
 
     # Filter out aliases not for this samples
     conf_r.aliases = { key: obj for key, obj in conf_r.aliases.items() 
