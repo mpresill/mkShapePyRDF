@@ -9,6 +9,28 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
+# jet pairing test
+
+# this are two-elements array that contain the indices of the paired jets
+# VBS_jets_maxmjj_massWZ
+# VBS_jets_massWZ_maxmjj
+# VBS_jets_maxPt_massWZ
+# VBS_jets_massWZ_maxPt
+# VBS_jets_maxmjj_maxPt
+# VBS_jets_maxPt
+# VBS_jets_maxmjj
+
+# V_jets_maxmjj_massWZ
+# V_jets_massWZ_maxmjj
+# V_jets_maxPt_massWZ
+# V_jets_massWZ_maxPt
+# V_jets_maxmjj_maxPt
+# V_jets_maxPt
+# V_jets_maxmjj
+
+# This in an integer that identifies the categody (resolved vs boosted)
+# VBS_category
+
 
 #leptons
 
