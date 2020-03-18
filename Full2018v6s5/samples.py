@@ -186,8 +186,10 @@ samples['Wjets'] = { 'name' :
 		   }
 
 # Fix Wjets binned + LO 
-addSampleWeight(samples,'Wjets', 'WJetsToLNu-LO', 'LHE_HT < 100')
-#addSampleWeight(samples,'Wjets', 'WJetsToLNu-HT70_100', 'ewknloW') #######ADD ME
+addSampleWeight(samples,'Wjets', 'WJetsToLNu-LO', '(LHE_HT < 70)*ewknloW')
+############
+# N.B XS correction! It was 1.0 in the sampleCrossSection in postprocessing --> this should be fixed
+addSampleWeight(samples,'Wjets', 'WJetsToLNu-HT70_100', '(1292.0)') #######ADD ME ewknloW
 addSampleWeight(samples,'Wjets', 'WJetsToLNu-HT100_200', 'ewknloW')
 addSampleWeight(samples,'Wjets', 'WJetsToLNu-HT200_400', 'ewknloW')
 addSampleWeight(samples,'Wjets', 'WJetsToLNu-HT400_600', 'ewknloW')
