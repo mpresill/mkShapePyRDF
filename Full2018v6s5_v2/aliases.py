@@ -76,31 +76,3 @@ aliases['whad_pt'] = {
     'expr': "Whad_pt( VBS_category, V_jets_maxmjj_massWZ, CleanJet_pt, CleanJet_eta, CleanJet_phi, Jet_mass,CleanJet_jetIdx )"
 }
 
-
-## BAD NOT TO INCLUDE THIS
-## THIS WILL BE ADDED IN NEXT SKIM
-# # PU jet Id SF
-
-# puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
-
-# aliases['PUJetIdSF'] = {
-#     'linesToAdd': [
-#         'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
-#         '.L %s/patches/pujetidsf_event.cc+' % configurations
-#     ],
-#     'class': 'PUJetIdEventSF',
-#     'args': (puidSFSource, '2018', 'loose'),
-#     'samples': mc
-# }
-
-# aliases['nvtx_reweighting'] = {
-#     'class': 'NvtxReweight',
-#     # Using Z->mm factors for both electron and muon regions
-#     'args':("%s/VBSjjlnu/Full2018v6/corrections/zmmnorm_reweighting_Zmm_fit.txt" % configurations),
-#     'linesToAdd' : [
-#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#         '.L %s/patches/nvtx_reweight.cc+' % configurations
-#    ],
-#     'samples' : mc      
-# }
-# }
