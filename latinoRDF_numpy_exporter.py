@@ -16,14 +16,18 @@ parser.add_argument("--cut", type=str, help="Cut to output")
 parser.add_argument("-o","--outputdir", type=str, help="Output dir")
 parser.add_argument("--vers", type=str, help="Version")
 parser.add_argument("-s","--samples", type=str, nargs="+", help="Samples to output")
+parser.add_argument("--functions",type=str, help="Functions file to load", required=False)
 parser.add_argument("--debug", action="store_true", help="Debug output")
+
 args = parser.parse_args()
 
 
-R.ROOT.EnableImplicitMT() # only for ROOT rdf
-print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
+# R.ROOT.EnableImplicitMT() # only for ROOT rdf
+# print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
 
 R.gInterpreter.ProcessLine(".L headers.hh")
+if args.functions:
+    R.gInterpreter.ProcessLine(".L "+ args.functions)
 
 # sample version
 version = args.vers

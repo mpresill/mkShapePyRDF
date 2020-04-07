@@ -1,6 +1,8 @@
 # mkShapePyRDF
 Example of analysis with PyRDF and ROOT RDataFrame for the Latinos framework
 
+Use guide: 
+
 ## log
 
 Open `LatinosSparkTest.ipynb` on https://swan.cern.ch.

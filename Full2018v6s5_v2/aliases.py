@@ -2,6 +2,10 @@ import os
 import copy
 import inspect
 
+import os
+import copy
+import inspect
+
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
 configurations = os.path.dirname(configurations) # ggH2016
 configurations = os.path.dirname(configurations) # Differential
@@ -13,6 +17,19 @@ configurations = os.path.dirname(configurations) # Configurations
 # samples, signals
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+
+aliases['detavbs_jetpt_bin'] = {
+    'expr': '1* ((deltaeta_vbs < 3.5)  && vbs_1_pt < 75) + \
+             2* ((deltaeta_vbs >= 3.5 && deltaeta_vbs < 5.5)  && vbs_1_pt < 75) + \
+             3* ((deltaeta_vbs >= 5.5)  && vbs_1_pt < 75) + \
+            \
+             4* ((deltaeta_vbs < 3)                        &&  ( vbs_1_pt >= 75 && vbs_1_pt <150)  ) + \
+             5* ((deltaeta_vbs >= 3  && deltaeta_vbs < 4)  &&  ( vbs_1_pt >= 75 && vbs_1_pt <150) ) + \
+             6* ((deltaeta_vbs >= 4)                       &&  ( vbs_1_pt >= 75 && vbs_1_pt <150) ) + \
+            \
+             7* ((deltaeta_vbs < 3.5)  &&  ( vbs_1_pt >= 150)  ) + \
+             8* ((deltaeta_vbs >= 3.5 )  &&  ( vbs_1_pt >= 150) )'
+}
 
 
 # B tagging
@@ -55,6 +72,10 @@ aliases['isSingleTop'] = {
     'samples': ['top']
 }
 
+aliases['whad_pt'] = {
+    'expr': "Whad_pt( VBS_category, V_jets_maxmjj_massWZ, CleanJet_pt, CleanJet_eta, CleanJet_phi, Jet_mass,CleanJet_jetIdx )"
+}
+
 
 ## BAD NOT TO INCLUDE THIS
 ## THIS WILL BE ADDED IN NEXT SKIM
@@ -81,4 +102,5 @@ aliases['isSingleTop'] = {
 #         '.L %s/patches/nvtx_reweight.cc+' % configurations
 #    ],
 #     'samples' : mc      
+# }
 # }
