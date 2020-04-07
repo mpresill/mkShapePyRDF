@@ -22,8 +22,8 @@ parser.add_argument("--debug", action="store_true", help="Debug output")
 args = parser.parse_args()
 
 
-# R.ROOT.EnableImplicitMT() # only for ROOT rdf
-# print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
+R.ROOT.EnableImplicitMT() # only for ROOT rdf
+print(f"Running with {R.ROOT.GetImplicitMTPoolSize()} threads")
 
 R.gInterpreter.ProcessLine(".L headers.hh")
 if args.functions:
