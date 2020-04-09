@@ -4,7 +4,7 @@
 
 cuts["supercut"] ={
     'expr': '( \
-                 (   (abs(Lepton_pdgId[0])==11 && Lepton_pt[0]>38 ) \
+                 (   (abs(Lepton_pdgId[0])==11 && Lepton_pt[0]>30 ) \
                  || (abs(Lepton_pdgId[0])==13 && Lepton_pt[0]>30 ) ) \
                 && vbs_0_pt > 50 && vbs_1_pt > 30 \
                 && PuppiMET_pt > 30 \
