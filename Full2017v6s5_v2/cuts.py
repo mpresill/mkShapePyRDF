@@ -11,10 +11,6 @@ cuts["supercut"] ={
                 && deltaeta_vbs >= 2.5  \
                 && mjj_vbs >= 500 \
                 && Mtw_lep < 185 \
-                && (abs(vbs_0_eta) <2.5 || abs(vbs_0_eta) > 3.2)\
-                && (abs(vbs_1_eta) <2.5 || abs(vbs_1_eta) > 3.2)\
-                && (abs(vjet_0_eta) <2.5 || abs(vjet_0_eta) > 3.2)\
-                && (abs(vjet_1_eta) <2.5 || abs(vjet_1_eta) > 3.2)\
             )',
     'parent' : None,
     'doVars': False,

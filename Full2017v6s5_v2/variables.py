@@ -49,6 +49,11 @@ variables['Lepton_pt'] = {   'name': 'Lepton_pt[0]',
                         'fold' : 3
                         }    
 
+variables['Lepton_flavour'] = {   'name': 'abs(Lepton_pdgId[0])',      
+                        'range' : (40,-2.5,2.5),  
+                        'xaxis' : 'Lepton #eta', 
+                        'fold' : 3
+                        }
 
 #delta angles between the VBS jets
 variables['deltaeta_vbs'] = {   'name': 'deltaeta_vbs',      
@@ -80,7 +85,7 @@ variables['PuppiMET'] = {   'name': 'PuppiMET_pt',
 
 
 # VBS vars
-variables['mjj_vbs_morebins'] = {   'name': 'mjj_vbs',      
+variables['mjj_vbs'] = {   'name': 'mjj_vbs',      
                         'range' : (20,200,4000) , 
                         'xaxis' : 'M_{jj} VBS', 
                         'fold' : 3,
