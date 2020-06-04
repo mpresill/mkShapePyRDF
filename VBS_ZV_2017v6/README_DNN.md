@@ -7,7 +7,7 @@ python unfold_sample.py -i .samples.py -o samples_v1.json -s Wjets DY top VZ VVV
 
 source /cvmfs/sft.cern.ch/lcg/views/LCG_96bpython3/x86_64-centos7-gcc8-opt/setup.sh
 
-python latinoRDF_numpy_exporter.py  --config-dir ./2017_v6_DNN  --cut boos_sig  --outputdir /eos/user/m/mpresill/CMS/VBS/VBS_ZV  --vers v1  --samples WJets DY top VZ VVV VBS_VV_QCD VBS_VV_EW  --debug
+python latinoRDF_numpy_exporter.py  --config-dir ./VBS_ZV_2017v6  --cut dummy  --outputdir ./VBS_ZV_2017v6  --vers v1  --samples WJets DY top VZ VVV VBS_VV_QCD VBS_VV_EW  --debug
 
 
 
