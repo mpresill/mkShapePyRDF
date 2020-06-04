@@ -15,10 +15,12 @@ configurations = os.path.dirname(configurations) # Configurations
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
+#this is a toy gen lep ma
 aliases['PromptGenLepMatch2l'] = {
-    'expr': 'Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1]',
+    'expr': '1.',
     'samples': mc
 } 
+
 
 
 # B tagging
