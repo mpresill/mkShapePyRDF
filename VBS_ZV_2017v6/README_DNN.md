@@ -10,3 +10,7 @@ source /cvmfs/sft.cern.ch/lcg/views/LCG_96bpython3/x86_64-centos7-gcc8-opt/setup
 python latinoRDF_numpy_exporter.py  --config-dir ./2017_v6_DNN  --cut boos_sig  --outputdir /eos/user/m/mpresill/CMS/VBS/VBS_ZV  --vers v1  --samples WJets DY top VZ VVV VBS_VV_QCD VBS_VV_EW  --debug
 
 
+
+
+NB.Davide committed a new version of the DNN machinery that keeps into account also negative weights from MCs. Think about pulling it at some point....
+
