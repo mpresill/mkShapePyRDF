@@ -2,11 +2,11 @@
 
 cuts["supercut"] ={
     'expr': '( \
-                    nLepton == 2. \
-                    && ( (  (Lepton_pdgId[0]*Lepton_pdgId[1]== - 11*11) && (Lepton_pt[0]>25) && (Lepton_pt[1]>20)  ) || \
-                    (  (Lepton_pdgId[0]*Lepton_pdgId[1]== - 13*13) && (Lepton_pt[0]>25) && (Lepton_pt[0]>20) )  )  \
+                    nLepton == 2 \
+                    && ( (  (Lepton_pdgId[0]*Lepton_pdgId[1]== - 11*11) && (Lepton_pt[0]>25.) && (Lepton_pt[1]>20.)  ) || \
+                    (  (Lepton_pdgId[0]*Lepton_pdgId[1]== - 13*13) && (Lepton_pt[0]>25.) && (Lepton_pt[0]>20.) )  )  \
                     && mll >60. && mll <120. \
-                    && nCleanJet >= 2 && AbsVec(CleanJet_pt)>30. && AbsVec(CleanJet_eta)<5.0  \
+                    && nCleanJet >= 2 && CleanJet_pt >30. && AbsVec(CleanJet_eta)<5.0  \
                     && mjj > 250. && detajj > 2.0 \
                    )',
     'parent' : None,
