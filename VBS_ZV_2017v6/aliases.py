@@ -17,7 +17,7 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
 #this is a toy gen lep ma
 aliases['PromptGenLepMatch2l'] = {
-    'expr': '1.',
+    'expr': 'Alt(Lepton_promptgenmatched,0,0)* Alt(Lepton_promptgenmatched,1,0)',
     'samples': mc
 } 
 
