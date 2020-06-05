@@ -19,6 +19,6 @@ source /cvmfs/sft.cern.ch/lcg/views/LCG_96bpython3/x86_64-centos7-gcc8-opt/setup
 #    --debug --functions functions.hh
 
 python latinoRDF_numpy_exporter.py --config VBS_ZV_2017v6 \
-    --cut dummy --ver v11 -o VBS_ZV_2017v6 \
+    --cut dummy --ver v1 -o VBS_ZV_2017v6 \
     -s WJets \
     --debug
