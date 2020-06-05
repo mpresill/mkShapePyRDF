@@ -31,7 +31,7 @@ cuts["dummy"] = {
 # at least 2 cleaned jets (from both leptons and FJ)
 # + bVetoed 
 # + tighter selection on mass window
-
+"""
 cuts["boos_sig"] = {
     'expr': ' nCleanFatJet == 1 \
             && nCleanJetNotFat >= 2 \
@@ -70,3 +70,4 @@ cuts["res_sig"] = {
     'doVars': True,
     'doNumpy': True
 }
+"""
